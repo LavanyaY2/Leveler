@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import base64
 
+from propelauth import check_auth
+
 # custom background
 def set_background(image):
     with open(image, 'rb') as image:
@@ -28,8 +30,13 @@ def application():
     st.title("Job Application")
     st.write("This is where the job application form will go.")
 
+    
 
     # navigate back to home
     if st.button("Back to Home", key="back_home"):
         st.session_state.page = "home"
         st.rerun()
+    
+    auth = check_auth()
+    with st.sidebar:
+        st.link_button('Account', auth.get_account_url(), use_container_width=True)
