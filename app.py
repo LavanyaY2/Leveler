@@ -5,7 +5,8 @@ import streamlit as st
 
 # import pages
 from application import application
-from auth import auth
+from propelauth import check_auth
+import webbrowser
 
 # Set page config
 st.set_page_config(page_title="Leveler", layout="wide")
@@ -124,9 +125,7 @@ def home():
             st.session_state.page = "application"
             st.rerun()
         
-        if st.button("Sign In", key="sign_in"):
-            st.session_state.page = "auth"
-            st.rerun()
+        st.link_button("Log in", "http://localhost:8000")
 
         st.markdown('</div>', unsafe_allow_html=True)
     
@@ -163,8 +162,10 @@ def main():
         home()
     elif st.session_state.page == "application":
         application()
-    elif st.session_state.page == "auth":
-        auth()
+    #elif st.session_state.page == "auth":
+        #login()
+        #...
+
 
 if __name__ == "__main__":
     main()
