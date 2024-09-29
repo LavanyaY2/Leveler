@@ -2,3 +2,8 @@ streamlit==1.38.0
 streamlit-lottie==0.0.5
 propelauth-py==3.1.18
 python-dotenv==1.0.1
+streamlit_extras
+sentence_transformers
+pandas
+streamlit_navigation_bar
+spacy

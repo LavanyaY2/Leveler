@@ -11,7 +11,7 @@ st.set_page_config(page_title="Leveler", layout="wide", initial_sidebar_state="c
 
 # import pages
 from application import application
-from auth import auth
+from apply import apply
 
 # Custom CSS with sage color palette and centered text
 st.markdown("""
@@ -272,6 +272,8 @@ def main():
         application()
     elif st.session_state.page == "auth":
         auth()
+    elif st.session_state.page == "apply":
+        apply()
 
 if __name__ == "__main__":
     main()
