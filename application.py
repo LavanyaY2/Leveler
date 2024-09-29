@@ -163,6 +163,8 @@ def application():
                 education = st.text_input("Please describe your educational background, including the highest degree obtained, institution name, major/field of study, graduation year, and any relevant courses or certifications.", "")
                 submitted = st.form_submit_button("Submit form")
 
+
+
     with col2:
 
         with stylable_container(
@@ -186,11 +188,5 @@ def application():
                 key="application_form"
             )
 
-    # set_background("test2.png")
-
-    # navigate back to home
-    if st.button("Back to Home", key="back_home"):
-        st.session_state.page = "home"
-        st.rerun()
 
 
