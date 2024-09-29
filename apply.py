@@ -14,11 +14,9 @@ def namehasher(name):
     unique_id = int(hash_value, 16) % 1000000  
     return unique_id
 
-
-
 def anonymize(name, address, contact, skills, education, experience):
     hashedname = namehasher(name)
-    text = """
+    text = f"""
     Name = {hashedname}
     Address: {address}
     Contact: {contact}
@@ -35,16 +33,7 @@ def anonymize(name, address, contact, skills, education, experience):
     return anontext
 
 
-def apply(name, address, contact, skills, education, experience):
-    uname = name
-    uaddress = address
-    ucontact = contact
-    uskills = skills
-    ueducation= education
-    uexperience = experience
-
-    
-
+def apply():
     # "confirm details"
     # "we'll anonymize identifying information before sending your application to this employer. you can select whether they receive your score for their job posting"
     # button -> confirm

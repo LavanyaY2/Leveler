@@ -4,8 +4,9 @@ import base64
 from streamlit_lottie import st_lottie
 from streamlit_extras.stylable_container import stylable_container
 from model import match_descs
-from apply import apply
-
+import spacy
+import spacy.cli
+import hashlib
 
 st.markdown("""
 <style>
@@ -135,6 +136,34 @@ def load_lottieurl(url: str):
 # Load Lottie animation
 lottie_test = load_lottieurl("https://lottie.host/421df829-e2f1-46b0-876e-865cd7c28e02/iwKk8et0jn.json")
 
+spacy.cli.download("xx_ent_wiki_sm")
+spacy.cli.download("en_core_web_sm")
+
+nlp = spacy.load("xx_ent_wiki_sm")
+
+def namehasher(name):
+    hash_object = hashlib.md5(name.encode())  
+    hash_value = hash_object.hexdigest()
+    unique_id = int(hash_value, 16) % 1000000  
+    return unique_id
+
+def anonymize(name, address, contact, skills, education, experience):
+    hashedname = namehasher(name)
+    text = f"""
+    Name = {hashedname}
+    Address: {address}
+    Contact: {contact}
+    Education: {education}
+    Skills: {skills}
+    Experience: {experience}
+"""
+    doc = nlp(text)
+    anontext = text
+    for ent in doc.ents:
+        if ent.label_ in ["PERSON", "ORG", "GPE", "LOC", "DATE", "EMAIL", "PHONE", "ADDRESS"]:
+            anontext = anontext.replace(ent.text, f"[{ent.label_}]")
+
+    return anontext
 
 # Application Page (placeholder)
 def application():
@@ -159,10 +188,15 @@ def application():
                 st.write(f"**Similarity Score**: {row['similarity_score']}")
                 st.write(f"**Description**: {row['desc']}")  
                 # Create an 'Apply' button for each job (not functional for now)
-                if st.button(f"Apply", key=f"apply_{idx}"):
-                    st.session_state.page = "apply"
+                #if st.button(f"Apply", key="confirm_apply"):
+                    #st.session_state.page = "apply"
                     #apply(name, address, contact, skills, education, experience)
-                    st.rerun()
+                    #if st.button("Confirm Application", key="anonymize"):
+                        #st.session_state.page = "apply"
+                with st.status("Anonymizing..."):
+                    anontext = anonymize(name, address, contact, skills, education, experience)
+                    st.write(f"Submitted! {anontext}")
+                        #st.rerun() 
                     # Add a divider between job entries
                 st.write("---")
 
