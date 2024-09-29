@@ -150,13 +150,14 @@ def namehasher(name):
 def anonymize(name, address, contact, skills, education, experience):
     hashedname = namehasher(name)
     text = f"""
-    Name = {hashedname}
-    Address: {address}
-    Contact: {contact}
+    Name: {hashedname}
+    Address: [ADDRESS]
+    Contact: [EMAIL]
     Education: {education}
     Skills: {skills}
     Experience: {experience}
-"""
+    """
+    
     doc = nlp(text)
     anontext = text
     for ent in doc.ents:
