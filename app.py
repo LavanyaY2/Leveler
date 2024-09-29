@@ -11,7 +11,6 @@ st.set_page_config(page_title="Leveler", layout="wide", initial_sidebar_state="c
 
 # import pages
 from application import application
-from auth import auth
 
 # Custom CSS with sage color palette and centered text
 st.markdown("""
