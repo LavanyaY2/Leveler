@@ -7,6 +7,7 @@ Bias affects women's access to job opportunities, contributing to:
 
 ### 🌟So how do we fix this?
 Introducing Leveler - 🏆WINNER FOR BEST DEI (DIVERSITY, EQUITY AND INCLUSION) HACK - SPONSORED BY FIDELITY @ TechNova 2024
+
 ![image](https://github.com/user-attachments/assets/45c03c24-8139-4361-869c-1e882933c751)
 
 Leveler is a tool that helps remove bias in the hiring process, evaluating candidates solely on their qualifications. Personal information on a resume has been known to introduce gender bias, and we aim to prevent this by providing employers with anonymized resumes that highlight a person's skills without revealing their identity. Our goal is to create a fairer job market where talent is recognized and valued, regardless of demographic factors. By focusing on qualifications alone, we hope to empower diverse candidates and promote a more inclusive workplace.
